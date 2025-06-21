@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   home-manager.sharedModules = [
     (_: {
       programs.yazi = {
@@ -41,19 +41,50 @@
             }
           ];
         };
+        settings = {
+          repend_preloaders = [
+            {
+              mime = "{audio,video,image}/*";
+              run = "mediainfo";
+            }
+            {
+              mime = "application/subrip";
+              run = "mediainfo";
+            }
+          ];
+          prepend_previewers = [
+            {
+              mime = "{audio,video,image}/*";
+              run = "mediainfo";
+            }
+            {
+              mime = "application/subrip";
+              run = "mediainfo";
+            }
+            {
+              mime = "*.md";
+              run = "glow";
+            }
+          ];
+        };
+        initLua = ./init.lua;
+        plugins = {
+          git = pkgs.yaziPlugins.git;
+          diff = pkgs.yaziPlugins.diff;
+          glow = pkgs.yaziPlugins.glow;
+          mediainfo = pkgs.yaziPlugins.mediainfo;
+          lazygit = pkgs.yaziPlugins.lazygit;
+          full-border = pkgs.yaziPlugins.full-border;
+          yatline-catppuccin = pkgs.yaziPlugins.yatline-catppuccin;
+          toggle-pane = pkgs.yaziPlugins.toggle-pane;
+        };
+        theme = {
+          dark = "catppuccin-mocha";
+          light = "catppuccin-latte";
+        };
         flavors = {
           dark = ./flavors/catppuccin-mocha.yazi;
           light = ./flavors/catppuccin-latte.yazi;
-        };
-        plugins = {
-          git = pkgs.git;
-          diff = pkgs.diff;
-          glow = pkgs.glow;
-          mediainfo = pkgs.mediainfo;
-          lazygit = pkgs.lazygit;
-          full-border = pkgs.full-border;
-          yatline-catppuccin = pkgs.yatline-catppuccin;
-          toggle-pane = pkgs.toggle-pane;
         };
       };
     })
