@@ -2,12 +2,15 @@
   home-manager.sharedModules = [
     (_: {
       home.packages = with pkgs; [
-        gcc
         unzip
         zoxide
+        eza
         fzf
         ffmpeg
+        mediainfo
+        glow
         jq
+        gcc
         cmatrix
         tty-clock
         cbonsai
