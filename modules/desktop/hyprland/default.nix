@@ -558,20 +558,15 @@
   ];
 
   # Change random wallpaper every hour
-  systemd.services.random-walls = {
+  systemd.user.services.random-walls = {
     description = "Change wallpaper every hour";
+    startAt = "hourly";
+    script =
+      "exec /run/current-system/sw/bin/bash /home/${opts.username}/nixos/modules/desktop/hyprland/scripts/random-walls.sh";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "%h/nixos/modules/desktop/hyprland/scripts/random-walls.sh";
-    };
-  };
-
-  systemd.timers.random-walls = {
-    description = "Change wallpaper every hour";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "hourly";
-      Persistent = true;
+      Environment =
+        "PATH=/etc/profiles/per-user/${opts.username}/bin:/run/current-system/sw/bin";
     };
   };
 }

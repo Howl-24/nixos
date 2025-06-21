@@ -22,12 +22,13 @@ while read -r MONITOR; do
   # 获取随机壁纸
   WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
 
-  # 预加载壁纸
-  hyprctl hyprpaper preload "$WALLPAPER"
-
-  # 应用壁纸
-  hyprctl hyprpaper wallpaper "$NAME,$WALLPAPER"
+  # 确保找到壁纸文件
+  if [[ -f "$WALLPAPER" ]]; then
+    # 预加载壁纸
+    hyprctl hyprpaper preload "$WALLPAPER"
+    # 应用壁纸
+    hyprctl hyprpaper wallpaper "$NAME,$WALLPAPER"
+  else
+    echo "未找到壁纸文件，跳过 $NAME"
+  fi
 done <<<"$MONITORS"
-
-# 刷新壁纸
-hyprctl hyprpaper reload
