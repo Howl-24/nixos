@@ -120,7 +120,7 @@
             # "${./scripts/autowaybar.sh}" # uncomment packages at the top
             "polkit-agent-helper-1"
             "sleep 2 && pamixer --set-volume 50"
-            "${./scripts/random-walls.sh}" # random wallpaper
+            "sleep 2 && ${./scripts/random-walls.sh}" # random wallpaper
           ];
 
           input = {
