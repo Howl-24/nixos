@@ -14,12 +14,17 @@
     impermanence.url = "github:nix-community/impermanence";
   };
   outputs = inputs@{ nixpkgs, home-manager, ... }:
-    let opts = import ./hosts/default/options.nix;
+    let
+      whoami = import ./hosts/whoami.nix;
+      hostname = if whoami.hostname != "" then whoami.hostname else "default";
+      systemType =
+        if whoami.system != "" then whoami.system else "x86_64-linux";
+      opts = import ./hosts/${whoami.hostname}/options.nix;
     in {
-      nixosConfigurations.dix = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
+        system = systemType;
         specialArgs = { inherit inputs opts; };
-        modules = [ ./hosts/default/configuration.nix ];
+        modules = [ ./hosts/${hostname}/configuration.nix ];
       };
     };
 }

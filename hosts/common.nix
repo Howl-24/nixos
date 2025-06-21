@@ -6,63 +6,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [ wget vim ] ++ lib.optional opts.proxy xray;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    mutableUsers = false;
-    users = {
-      root.initialHashedPassword = opts.rootpasswd;
-      ${opts.username} = {
-        initialHashedPassword = opts.userpasswd;
-        isNormalUser = true;
-        extraGroups = [ "networkmanager" "wheel" ]
-          ++ lib.optional opts.virtual "libvirtd";
-      };
-    };
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    users.howl = { pkgs, ... }: {
-      # Let Home Manager install and manage itself.
-      programs.home-manager.enable = true;
-
-      xdg.enable = true;
-      xdg.portal = {
-        enable = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-hyprland
-          xdg-desktop-portal-gtk
-        ];
-        xdgOpenUsePortal = true;
-      };
-
-      home.username = opts.username;
-      home.homeDirectory = "/home/${opts.username}";
-      home.stateVersion = "25.05"; # Please read the comment before changing.
-      home.sessionVariables = {
-        TERMINAL = opts.terminal;
-        EDITOR = opts.editor;
-        BROWSER = opts.browser;
-      };
-
-      # Packages that don't require configuration. If you're looking to configure a program see the /modules dir
-      home.packages = with pkgs; [ ];
-    };
-  };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-  ];
-
   # Filesystems support
   boot.supportedFilesystems = [ "ntfs" "exfat" "ext4" "fat32" "btrfs" ];
   services.devmon.enable = true;
@@ -131,4 +74,75 @@
   };
 
   console.keyMap = opts.consoleKeymap; # Configure console keymap
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs;
+    [ wget vim ] ++ lib.optional opts.proxy xray;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users = {
+    mutableUsers = false;
+    users = {
+      root.initialHashedPassword = opts.rootpasswd;
+      ${opts.username} = {
+        initialHashedPassword = opts.userpasswd;
+        isNormalUser = true;
+        extraGroups = [ "networkmanager" "wheel" ]
+          ++ lib.optional opts.virtual "libvirtd";
+      };
+    };
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    users.howl = { pkgs, ... }: {
+      # Let Home Manager install and manage itself.
+      programs.home-manager.enable = true;
+
+      xdg.enable = true;
+      xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-hyprland
+          xdg-desktop-portal-gtk
+        ];
+        xdgOpenUsePortal = true;
+      };
+
+      home.username = opts.username;
+      home.homeDirectory = "/home/${opts.username}";
+      home.stateVersion = "25.05"; # Please read the comment before changing.
+      home.sessionVariables = {
+        TERMINAL = opts.terminal;
+        EDITOR = opts.editor;
+        BROWSER = opts.browser;
+      };
+
+      # Packages that don't require configuration. If you're looking to configure a program see the /modules dir
+      home.packages = with pkgs; [ ];
+    };
+  };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+  ];
+
+  # Automatic clean garbage
+  nix = {
+    gc.automatic = true;
+    gc.dates = "weekly";
+    optimise.automatic = true;
+    optimise.dates = "weekly";
+  };
+  home-manager.sharedModules = [
+    (_: {
+      nix.gc.automatic = true;
+      nix.gc.frequency = "weekly";
+    })
+  ];
 }
