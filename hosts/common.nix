@@ -8,20 +8,21 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [ wget xray ];
   environment.systemPackages = with pkgs;
     [ wget vim ] ++ lib.optional opts.proxy xray;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
-  users.users.root.initialHashedPassword = opts.rootpasswd;
-  users.users.${opts.username} = {
-    initialHashedPassword = opts.userpasswd;
-    isNormalUser = true;
-    # extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    extraGroups = [ "networkmanager" "wheel" ]
-      ++ lib.optional opts.virtual "libvirtd";
-
+  users = {
+    mutableUsers = false;
+    users = {
+      root.initialHashedPassword = opts.rootpasswd;
+      ${opts.username} = {
+        initialHashedPassword = opts.userpasswd;
+        isNormalUser = true;
+        extraGroups = [ "networkmanager" "wheel" ]
+          ++ lib.optional opts.virtual "libvirtd";
+      };
+    };
   };
 
   home-manager = {
@@ -69,8 +70,11 @@
   services.udisks2.enable = true;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelModules = lib.optional opts.virtual "kvm";
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

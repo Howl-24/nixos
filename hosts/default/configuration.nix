@@ -6,7 +6,6 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/hardware/gpu/${opts.gpu}
-    ../../modules/persist
 
     ../common.nix
 
@@ -32,9 +31,12 @@
     ../../modules/programs/media/obs-studio
     ../../modules/programs/game
     ../../modules/programs/misc
+    ../../modules/programs/sandbox/firejail
+    ../../modules/programs/sandbox/flatpak
 
     ../../modules/themes/catppuccin
-  ] ++ lib.optional opts.proxy ../../modules/programs/proxy
+  ] ++ lib.optional opts.persist ../../modules/persist
+    ++ lib.optional opts.proxy ../../modules/programs/proxy
     ++ lib.optional opts.virtual ../../modules/virtual/libvirtd;
 
   networking.hostName = opts.hostname; # Define your hostname.

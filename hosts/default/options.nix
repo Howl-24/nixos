@@ -8,7 +8,7 @@
   terminalFileManager = "yazi";
   browser = "firefox";
   emailClient = "thunderbird";
-  wallpaper = "anime/74851178.png";
+  wallpaper = "black.png";
   gitUserName = "howl";
   gitUserEmail = "howell.ding@outlook.com";
 
@@ -24,6 +24,7 @@
   consoleKeymap = "us";
 
   # Optional function
+  persist = true;
   proxy = true;
   virtual = true;
 }
