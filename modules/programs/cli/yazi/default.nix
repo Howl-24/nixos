@@ -1,11 +1,13 @@
 { pkgs, ... }: {
   home-manager.sharedModules = [
     (_: {
+      home.file.".config/yazi/theme.toml".source =
+        ./catppuccin-mocha-mauve.toml;
       programs.yazi = {
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        shellWrapperName = "y";
+        # shellWrapperName = "y";
         settings = {
           manager = {
             show_hidden = false;
@@ -28,9 +30,39 @@
             max_height = 2160; # maybe 1000
             image_quality = 90;
           };
+          plugin = {
+            repend_preloaders = [
+              {
+                mime = "{audio,video,image}/*";
+                run = "mediainfo";
+              }
+              {
+                mime = "application/subrip";
+                run = "mediainfo";
+              }
+            ];
+            prepend_previewers = [
+              {
+                mime = "{audio,video,image}/*";
+                run = "mediainfo";
+              }
+              {
+                mime = "application/subrip";
+                run = "mediainfo";
+              }
+              {
+                mime = "*.md";
+                run = "glow";
+              }
+            ];
+          };
         };
         keymap = {
           manager.prepend_keymap = [
+            {
+              on = "<C-d>";
+              run = "plugin diff";
+            }
             {
               on = "T";
               run = "plugin toggle-pane min-preview";
@@ -38,32 +70,6 @@
             {
               on = "T";
               run = "plugin toggle-pane max-preview";
-            }
-          ];
-        };
-        settings = {
-          repend_preloaders = [
-            {
-              mime = "{audio,video,image}/*";
-              run = "mediainfo";
-            }
-            {
-              mime = "application/subrip";
-              run = "mediainfo";
-            }
-          ];
-          prepend_previewers = [
-            {
-              mime = "{audio,video,image}/*";
-              run = "mediainfo";
-            }
-            {
-              mime = "application/subrip";
-              run = "mediainfo";
-            }
-            {
-              mime = "*.md";
-              run = "glow";
             }
           ];
         };
@@ -77,14 +83,6 @@
           full-border = pkgs.yaziPlugins.full-border;
           yatline-catppuccin = pkgs.yaziPlugins.yatline-catppuccin;
           toggle-pane = pkgs.yaziPlugins.toggle-pane;
-        };
-        theme = {
-          dark = "catppuccin-mocha";
-          light = "catppuccin-latte";
-        };
-        flavors = {
-          dark = ./flavors/catppuccin-mocha.yazi;
-          light = ./flavors/catppuccin-latte.yazi;
         };
       };
     })
