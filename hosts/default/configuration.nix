@@ -24,6 +24,7 @@
     ../../modules/programs/cli/cava
     ../../modules/programs/editor/neovim
     ../../modules/programs/editor/vscode
+    ../../modules/programs/ssh
     ../../modules/programs/media/mpv
     ../../modules/programs/media/spicetify
     ../../modules/programs/media/thunderbird
