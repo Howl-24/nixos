@@ -20,10 +20,10 @@
         shellAliases = {
           ll = "ls -l";
           vi = "nvim";
+          lg = "lazygit";
           ff = "fastfetch -c ~/.config/fastfetch/ff.jsonc";
           reimufetch = "fastfetch -c ~/.config/fastfetch/reimu.jsonc";
           update = "sudo nixos-rebuild switch";
-          # update = "sudo nixos-rebuild switch --flake /home/howl/nixos#dix";
         };
 
         initContent = ''
