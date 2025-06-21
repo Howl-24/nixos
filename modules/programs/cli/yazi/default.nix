@@ -43,16 +43,25 @@
             ];
             prepend_previewers = [
               {
+                name = "*/";
+                run = ''
+                  piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"'';
+              }
+              {
+                name = "*.tar*";
+                run = ''piper --format=url -- tar tf "$1"'';
+              }
+              {
+                name = "*.md";
+                run = ''piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'';
+              }
+              {
                 mime = "{audio,video,image}/*";
                 run = "mediainfo";
               }
               {
                 mime = "application/subrip";
                 run = "mediainfo";
-              }
-              {
-                mime = "*.md";
-                run = "glow";
               }
             ];
           };
@@ -75,13 +84,13 @@
         };
         initLua = ./init.lua;
         plugins = {
+          piper = pkgs.yaziPlugins.piper;
           git = pkgs.yaziPlugins.git;
           diff = pkgs.yaziPlugins.diff;
-          glow = pkgs.yaziPlugins.glow;
           mediainfo = pkgs.yaziPlugins.mediainfo;
           lazygit = pkgs.yaziPlugins.lazygit;
           full-border = pkgs.yaziPlugins.full-border;
-          yatline-catppuccin = pkgs.yaziPlugins.yatline-catppuccin;
+          yatline = pkgs.yaziPlugins.yatline;
           toggle-pane = pkgs.yaziPlugins.toggle-pane;
         };
       };
