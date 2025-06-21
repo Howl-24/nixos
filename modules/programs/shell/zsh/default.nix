@@ -18,7 +18,6 @@
         };
 
         shellAliases = {
-          ll = "ls -l";
           vi = "nvim";
           lg = "lazygit";
           ff = "fastfetch -c ~/.config/fastfetch/ff.jsonc";

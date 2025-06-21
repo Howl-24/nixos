@@ -4,7 +4,6 @@
       home.packages = with pkgs; [
         unzip
         zoxide
-        eza
         fzf
         ffmpeg
         mediainfo
