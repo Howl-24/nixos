@@ -119,7 +119,8 @@
             # "${./scripts/batterynotify.sh}" # battery notification
             # "${./scripts/autowaybar.sh}" # uncomment packages at the top
             "polkit-agent-helper-1"
-            "sleep 3 && pamixer --set-volume 50"
+            "sleep 2 && pamixer --set-volume 50"
+            "${./scripts/random-walls.sh}" # random wallpaper
           ];
 
           input = {
@@ -423,6 +424,9 @@
               "$mainMod, V, exec, ${
                 ./scripts/ClipManager.sh
               }" # Clipboard Manager
+              "$mainMod, R, exec, ${
+                ./scripts/random-walls.sh
+              }" # random wallpaper
               # "$mainMod, M, exec, pkill -x rofi || ${
               #   ./scripts/rofimusic.sh
               # }" # online music
@@ -536,10 +540,38 @@
           ];
         };
         extraConfig = ''
+          binds {
+              workspace_back_and_forth = 1
+              #allow_workspace_cycles=1
+              #pass_mouse_when_bound=0
+            }
+
+          # Easily plug in any monitor
+          monitor=,preferred,auto,1
+
+          # Binds workspaces to my monitors only (find desc with: hyprctl monitors)
           workspace = 1, monitor:desc:SAC G7u Pro 0001, default:true;
           workspace = 10, monitor:desc:KOS KOIOS K2718UD 0000000000000, default:true;
         '';
       };
     })
   ];
+
+  # Change random wallpaper every hour
+  systemd.services.random-walls = {
+    description = "Change wallpaper every hour";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "%h/nixos/modules/desktop/hyprland/scripts/random-walls.sh";
+    };
+  };
+
+  systemd.timers.random-walls = {
+    description = "Change wallpaper every hour";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+  };
 }

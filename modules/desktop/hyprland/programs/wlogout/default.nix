@@ -33,7 +33,6 @@
           {
             label = "suspend";
             action = "systemctl suspend";
-            # action = "${pkgs.hyprlock}/bin/hyprlock";
             text = "Suspend";
             keybind = "u";
           }
