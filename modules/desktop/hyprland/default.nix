@@ -1,5 +1,3 @@
-# { lib, pkgs, terminal, terminalFileManager, editor, browser, emailClient, kbdLayout
-# , kbdVariant, ... }: {
 { lib, pkgs, opts, ... }: {
 
   imports = [
@@ -32,11 +30,21 @@
     };
   };
 
+  systemd.user.services.random-walls = {
+    description = "Change wallpaper every hour";
+    startAt = "hourly";
+    script =
+      "exec /run/current-system/sw/bin/bash /home/${opts.username}/nixos/modules/desktop/hyprland/scripts/random-walls.sh";
+    serviceConfig = {
+      Type = "oneshot";
+      Environment =
+        "PATH=/etc/profiles/per-user/${opts.username}/bin:/run/current-system/sw/bin";
+    };
+  };
+
   programs.hyprland = {
     enable = true;
-    withUWSM = true;
     xwayland.enable = true;
-
   };
 
   home-manager.sharedModules = let inherit (lib) getExe getExe';
@@ -421,6 +429,9 @@
               "$mainMod ALT, G, exec, ${
                 ./scripts/gamemode.sh
               }" # disable hypr effects for gamemode
+              "$mainMod CTRL, G, exec, ${
+                ./scripts/steam-scope.sh
+              } games" # launch steam in gamescope
               "$mainMod, V, exec, ${
                 ./scripts/ClipManager.sh
               }" # Clipboard Manager
@@ -492,7 +503,7 @@
               "$mainMod CTRL, mouse:275, movetoworkspacesilent, 10"
 
               # Rebuild NixOS with a KeyBind
-              "$mainMod, U, exec, $term -e ${./scripts/rebuild.sh}"
+              "$mainMod, U, exec, $terminal -e ${./scripts/rebuild.sh}"
 
               # Scroll through existing workspaces with mainMod + scroll
               "$mainMod, mouse_down, workspace, e+1"
@@ -556,17 +567,4 @@
       };
     })
   ];
-
-  # Change random wallpaper every hour
-  systemd.user.services.random-walls = {
-    description = "Change wallpaper every hour";
-    startAt = "hourly";
-    script =
-      "exec /run/current-system/sw/bin/bash /home/${opts.username}/nixos/modules/desktop/hyprland/scripts/random-walls.sh";
-    serviceConfig = {
-      Type = "oneshot";
-      Environment =
-        "PATH=/etc/profiles/per-user/${opts.username}/bin:/run/current-system/sw/bin";
-    };
-  };
 }

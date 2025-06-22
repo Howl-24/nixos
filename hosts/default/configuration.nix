@@ -36,6 +36,8 @@
     ../../modules/programs/sandbox/firejail
     ../../modules/programs/sandbox/flatpak
 
+    # ../../modules/scripts
+
     ../../modules/themes/catppuccin
   ] ++ lib.optional opts.persist ../../modules/persist
     ++ lib.optional opts.proxy ../../modules/programs/proxy

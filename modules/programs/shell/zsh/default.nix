@@ -13,7 +13,7 @@
 
         oh-my-zsh = {
           enable = true;
-          plugins = [ "git" ];
+          plugins = [ "git" "vi-mode" "themes" ];
           theme = "random";
         };
 
@@ -25,10 +25,15 @@
           update = "sudo nixos-rebuild switch";
         };
 
+        envExtra = ''
+          export PATH="$HOME/.local/bin:$PATH"
+        '';
+
         initContent = ''
-           if uwsm check may-start && uwsm select; then
-          	exec uwsm start default
-          fi
+          case $- in # check shell options
+              *i*) ;; # interactive shell
+                *) return;; # don't do anything
+          esac
         '';
       };
     })

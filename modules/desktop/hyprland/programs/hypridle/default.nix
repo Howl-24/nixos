@@ -10,7 +10,6 @@
             unlock_cmd = "pkill --signal SIGUSR1 hyprlock";
             before_sleep_cmd = "loginctl lock-session";
             after_sleep_cmd = "sleep 3 && hyprctl dispatch dpms on";
-
           };
           listener = [{
             timeout = 300; # 5 Minutes

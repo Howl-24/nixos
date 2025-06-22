@@ -19,7 +19,7 @@
           # }
           {
             label = "logout";
-            action = "hyprctl dispatch exit 0";
+            action = "hyprctl dispatch exit 0 || uwsm check may-start";
             # action = "killall -9 Hyprland sleep 2";
             text = "Exit";
             keybind = "e";

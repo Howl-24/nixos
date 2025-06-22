@@ -75,10 +75,22 @@
 
   console.keyMap = opts.consoleKeymap; # Configure console keymap
 
+  # Display manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command =
+          "${pkgs.greetd.tuigreet}/bin/tuigreet --time --theme 'border=blue;text=white;prompt=cyan;time=yellow;action=white;button=red;container=black;input=white' --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs;
-    [ wget vim ] ++ lib.optional opts.proxy xray;
+    [ pkgs.greetd.tuigreet wget vim ] ++ lib.optional opts.proxy xray;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -135,13 +147,16 @@
   # Automatic clean garbage
   nix = {
     gc.automatic = true;
+    gc.persistent = true;
     gc.dates = "weekly";
     optimise.automatic = true;
+    optimise.persistent = true;
     optimise.dates = "weekly";
   };
   home-manager.sharedModules = [
     (_: {
       nix.gc.automatic = true;
+      nix.gc.persistent = true;
       nix.gc.frequency = "weekly";
     })
   ];

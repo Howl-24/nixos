@@ -15,7 +15,7 @@
   # System configuration
   rootpasswd =
     "$6$1bNtqKFsObhMC1OG$THnog0HqmR/GnN.0IwndZzuijVMiV0cZIPUjmCvDs6gsjHAc.FYfcIlKmiMx2hy2gbd814Br1uNAhiyKl4W9g.";
-  hostname = "dix";
+  hostname = "default";
   gpu = "nvidia";
   locale = "en_US.UTF-8";
   timezone = "Asia/Shanghai";
@@ -24,7 +24,7 @@
   consoleKeymap = "us";
 
   # Optional function
-  persist = true;
+  persist = false;
   proxy = true;
-  virtual = true;
+  virtual = false;
 }

@@ -84,6 +84,7 @@ yad \
   "SUPER ALT K" "Change keyboard layout" "scripts/keyboardswitch.sh" \
   "SUPER U" "Rebuild system" "$_terminal -e scripts/rebuild.sh" \
   "SUPER G" "Game launcher" "scripts/rofi.sh games" \
+  "SUPER CTRL G" "Steam gamescope" "scripts/steam-scope.sh" \
   "SUPER ALT G" "Enable game mode" "scripts/gamemode.sh" \
   "SUPER V" "Clipboard manager" "scripts/ClipManager.sh" \
   \

@@ -7,6 +7,7 @@ return {
 
         nix = { "nixfmt" },
 
+        json = { "jq" },
         -- Fix common misspellings in source code on all filetypes
         ["*"] = { "codespell" },
       },
