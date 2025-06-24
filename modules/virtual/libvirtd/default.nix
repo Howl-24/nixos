@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-  # Libvirtd
+{ pkgs, opts, ... }: {
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -18,4 +17,8 @@
     };
   };
   programs.virt-manager.enable = true;
+  boot.kernelModules = [ "kvm" ];
+  users = {
+    users = { ${opts.username} = { extraGroups = [ "libvirtd" ]; }; };
+  };
 }
