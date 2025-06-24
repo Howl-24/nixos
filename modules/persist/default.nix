@@ -5,11 +5,15 @@
     hideMounts = true;
     directories = [
       # "/var/log"
-      "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
+      "/var/lib/bluetooth"
       "/etc/NetworkManager/system-connections"
+
+      # virtual machines
+      "/var/lib/libvirt"
+
       {
         directory = "/var/lib/colord";
         user = "colord";

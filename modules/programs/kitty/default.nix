@@ -11,6 +11,7 @@
         themeFile = "Catppuccin-Mocha";
         shellIntegration.enableBashIntegration = true;
         shellIntegration.enableZshIntegration = true;
+        # shellIntegration.mode = "no-sudo";
         settings = {
           # shell = "${getExe pkgs.tmux}";
           cursor_trail = 3; # Fancy cursor movements (especially in nixvim)
@@ -37,7 +38,6 @@
           inactive_tab_foreground = "#bac2de";
           inactive_tab_background = "#313244";
         };
-        # shellIntegration.mode = "no-sudo";
         keybindings = {
           "ctrl+alt+n" = "launch --cwd=current";
           "alt+w" = "copy_and_clear_or_interrupt";
@@ -54,10 +54,7 @@
           "alt+0" = "goto_tab 10";
 
           # Tmux
-          "ctrl+t" = "launch --cwd=current --type=overlay tmux-sessionizer";
-          # "ctrl+t" = "launch --cwd=current --title tmux-sessionizer tmux-sessionizer";
-          "ctrl+shift+left" = "no_op";
-          "ctrl+shift+right" = "no_op";
+          "ctrl+t" = "launch --cwd=current --type=overlay tmux";
         };
       };
     })

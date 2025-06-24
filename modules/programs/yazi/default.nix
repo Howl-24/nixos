@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, opts, ... }: {
   home-manager.sharedModules = [
     (_: {
       home.file.".config/yazi/theme.toml".source =
@@ -9,7 +9,7 @@
         enableZshIntegration = true;
         # shellWrapperName = "y";
         settings = {
-          manager = {
+          mgr = {
             show_hidden = false;
             show_symlink = true;
             sort_dir_first = true;

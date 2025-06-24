@@ -35,15 +35,6 @@ in {
         gtk4.extraConfig = { "gtk-application-prefer-dark-theme" = "1"; };
       };
 
-      # Set wallpaper
-      services.hyprpaper = {
-        enable = true;
-        settings = {
-          preload = [ "${../wallpapers/${opts.wallpaper}}" ];
-          wallpaper = [ ",${../wallpapers/${opts.wallpaper}}" ];
-        };
-      };
-
       dconf.settings = {
         "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
       };

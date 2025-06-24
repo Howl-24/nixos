@@ -4,7 +4,6 @@
       home.packages = with pkgs; [
         unzip
         zoxide
-        fzf
         ffmpeg
         mediainfo
         glow
