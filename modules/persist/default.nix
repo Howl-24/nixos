@@ -10,17 +10,16 @@
       "/var/lib/systemd/timers"
       "/var/lib/bluetooth"
       "/etc/NetworkManager/system-connections"
-
-      # virtual machines
-      "/var/lib/libvirt"
-
       {
         directory = "/var/lib/colord";
         user = "colord";
         group = "colord";
         mode = "u=rwx,g=rx,o=";
       }
-    ];
+    ] ++ (if config.virtualisation.libvirtd.enable then
+      [ "/var/lib/libvirt" ]
+    else
+      [ ]);
     files = [
       "/etc/machine-id"
       {
