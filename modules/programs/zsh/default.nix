@@ -18,7 +18,6 @@
         };
 
         shellAliases = {
-          vi = "nvim";
           lg = "lazygit";
           ff = "fastfetch -c ~/.config/fastfetch/ff.jsonc";
           reimufetch = "fastfetch -c ~/.config/fastfetch/reimu.jsonc";
