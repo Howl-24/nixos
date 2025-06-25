@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
   # persist
   imports = [ inputs.impermanence.nixosModules.impermanence ];
   environment.persistence."/nix/persist" = {
@@ -16,15 +22,14 @@
         group = "colord";
         mode = "u=rwx,g=rx,o=";
       }
-    ] ++ (if config.virtualisation.libvirtd.enable then
-      [ "/var/lib/libvirt" ]
-    else
-      [ ]);
+    ] ++ (if config.virtualisation.libvirtd.enable then [ "/var/lib/libvirt" ] else [ ]);
     files = [
       "/etc/machine-id"
       {
         file = "/etc/nix/id_rsa";
-        parentDirectory = { mode = "u=rwx,g=rx,o=rx"; };
+        parentDirectory = {
+          mode = "u=rwx,g=rx,o=rx";
+        };
       }
     ];
   };

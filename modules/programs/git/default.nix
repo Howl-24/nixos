@@ -1,4 +1,5 @@
-{ opts, ... }: {
+{ opts, ... }:
+{
   home-manager.sharedModules = [
     (_: {
       programs.git = {
@@ -9,4 +10,3 @@
     })
   ];
 }
-

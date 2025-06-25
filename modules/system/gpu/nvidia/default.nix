@@ -1,27 +1,30 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
-  nvidiaDriverChannel =
-    config.boot.kernelPackages.nvidiaPackages.latest; # stable, latest, beta, etc.
-in {
-  environment.sessionVariables =
-    lib.optionalAttrs config.programs.hyprland.enable {
-      NVD_BACKEND = "direct";
-      GBM_BACKEND = "nvidia-drm";
-      WLR_NO_HARDWARE_CURSORS = "1";
-      LIBVA_DRIVER_NAME = "nvidia";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      # MOZ_DISABLE_RDD_SANDBOX = 1; # Potential security risk
+  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.latest; # stable, latest, beta, etc.
+in
+{
+  environment.sessionVariables = lib.optionalAttrs config.programs.hyprland.enable {
+    NVD_BACKEND = "direct";
+    GBM_BACKEND = "nvidia-drm";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # MOZ_DISABLE_RDD_SANDBOX = 1; # Potential security risk
 
-      __GL_GSYNC_ALLOWED = "1"; # GSync
-    };
+    __GL_GSYNC_ALLOWED = "1"; # GSync
+  };
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ]; # or "nvidiaLegacy470", etc.
-  boot.kernelParams =
-    lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
-      "nvidia-drm.modeset=1"
-      "nvidia_drm.fbdev=1"
-    ];
+  boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
+    "nvidia-drm.modeset=1"
+    "nvidia_drm.fbdev=1"
+  ];
   hardware = {
     nvidia = {
       open = true;
@@ -45,7 +48,8 @@ in {
   nixpkgs.config = {
     nvidia.acceptLicense = true;
     cudaSupport = true;
-    allowUnfreePredicate = pkg:
+    allowUnfreePredicate =
+      pkg:
       builtins.elem (lib.getName pkg) [
         "cudatoolkit"
         "nvidia-persistenced"

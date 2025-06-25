@@ -1,13 +1,12 @@
-{ pkgs, opts, ... }: {
+{ pkgs, opts, ... }:
+{
   home-manager.sharedModules = [
     (_: {
-      home.file.".config/yazi/theme.toml".source =
-        ./catppuccin-mocha-mauve.toml;
+      home.file.".config/yazi/theme.toml".source = ./catppuccin-mocha-mauve.toml;
       programs.yazi = {
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        # shellWrapperName = "y";
         settings = {
           mgr = {
             show_hidden = false;
@@ -24,8 +23,7 @@
           preview = {
             # wrap = "yes";
             tab_size = 4;
-            image_filter =
-              "triangle"; # from fast to slow but high quality: nearest, triangle, catmull-rom, lanczos3
+            image_filter = "triangle"; # from fast to slow but high quality: nearest, triangle, catmull-rom, lanczos3
             max_width = 3840; # maybe 1000
             max_height = 2160; # maybe 1000
             image_quality = 90;
@@ -44,8 +42,7 @@
             prepend_previewers = [
               {
                 name = "*/";
-                run = ''
-                  piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"'';
+                run = ''piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"'';
               }
               {
                 name = "*.tar*";
@@ -94,7 +91,10 @@
           toggle-pane = pkgs.yaziPlugins.toggle-pane;
         };
       };
-      home.packages = with pkgs; [ mediainfo glow ];
+      home.packages = with pkgs; [
+        mediainfo
+        glow
+      ];
     })
   ];
 }

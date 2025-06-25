@@ -9,8 +9,6 @@
     (_: {
       programs.vscode = {
         enable = true;
-        # mutableExtensionsDir = true; # TODO: test with home-manager
-        # package = pkgs.vscodium;
         package = pkgs.vscode;
         profiles.default = {
           extensions = with pkgs.vscode-extensions; [

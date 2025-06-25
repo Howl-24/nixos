@@ -1,1 +1,7 @@
-{ imports = [ ./xray ./routing.nix ./iptables.nix ]; }
+{
+  imports = [
+    ./xray
+    ./routing.nix
+    ./iptables.nix
+  ];
+}

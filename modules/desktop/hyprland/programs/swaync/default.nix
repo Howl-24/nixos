@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   #  use later
   home-manager.sharedModules = [
     (_: {
@@ -50,13 +51,11 @@
                 actions = [
                   {
                     label = "Whole screen";
-                    command =
-                      "sh -c 'swaync-client -cp; sleep 1; grimblast copysave output \"/tmp/screenshot.png\"; swappy -f \"/tmp/screenshot.png\"'";
+                    command = "sh -c 'swaync-client -cp; sleep 1; grimblast copysave output \"/tmp/screenshot.png\"; swappy -f \"/tmp/screenshot.png\"'";
                   }
                   {
                     label = "Whole window / Select region";
-                    command =
-                      "sh -c 'swaync-client -cp; grimblast copysave area \"/tmp/screenshot.png\"; swappy -f \"/tmp/screenshot.png\"'";
+                    command = "sh -c 'swaync-client -cp; grimblast copysave area \"/tmp/screenshot.png\"; swappy -f \"/tmp/screenshot.png\"'";
                   }
                 ];
               };
@@ -91,7 +90,9 @@
               show-per-app-icon = true;
               show-per-app-label = true;
             };
-            dnd = { text = " Do Not Disturb"; };
+            dnd = {
+              text = " Do Not Disturb";
+            };
             mpris = {
               image-size = 96;
               image-radius = 4;

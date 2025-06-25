@@ -1,4 +1,5 @@
-{ pkgs, opts, ... }: {
+{ pkgs, opts, ... }:
+{
   hardware = {
     graphics = {
       enable = true;
@@ -21,6 +22,12 @@
     };
   };
   environment.systemPackages = with pkgs; [ steam-run ];
-  home-manager.sharedModules =
-    [ (_: { home.packages = with pkgs; [ prismlauncher osu-lazer ]; }) ];
+  home-manager.sharedModules = [
+    (_: {
+      home.packages = with pkgs; [
+        prismlauncher
+        osu-lazer
+      ];
+    })
+  ];
 }

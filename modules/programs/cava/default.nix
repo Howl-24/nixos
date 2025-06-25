@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.sharedModules = [
     (_: {
       programs.cava = {
@@ -11,7 +12,6 @@
           };
           color = {
             gradient = 1;
-
             # Mocha
             gradient_color_1 = "'#94e2d5'";
             gradient_color_2 = "'#89dceb'";

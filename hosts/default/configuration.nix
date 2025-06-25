@@ -2,50 +2,62 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, opts, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  lib,
+  opts,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/hardware/gpu/${opts.gpu}
-    # ../../modules/persist
-
     ../common.nix
 
-    ../../modules/desktop/hyprland
-    ../../modules/desktop/themes/catppuccin
+    # ../../modules/system/blueman
+    ../../modules/system/disks
+    # ../../modules/system/flatpak
+    # ../../modules/system/fonts
+    ../../modules/system/garbage-collection
+    ../../modules/system/gpu/${opts.gpu}
+    # ../../modules/system/greetd
+    # ../../modules/system/impermanence
+    # ../../modules/system/libvirtd
+    # ../../modules/system/pipewire
+    ../../modules/system/proxy
+    # ../../modules/system/snapper
 
-    ../../modules/programs/firefox
-    ../../modules/programs/kitty
-    ../../modules/programs/zsh
-    ../../modules/programs/tmux
-    ../../modules/programs/yazi
-    ../../modules/programs/fzf
-    ../../modules/programs/zoxide
-    ../../modules/programs/eza
-    ../../modules/programs/fastfetch
-    ../../modules/programs/git
-    ../../modules/programs/lazygit
+    # ../../modules/desktop/hyprland
+    # ../../modules/desktop/themes/catppuccin
+
     ../../modules/programs/btop
-    ../../modules/programs/cava
-    ../../modules/programs/neovim
-    ../../modules/programs/vscode
-    ../../modules/programs/ssh
-    ../../modules/programs/mpv
-    ../../modules/programs/spicetify
-    ../../modules/programs/thunderbird
-    ../../modules/programs/discord
-    ../../modules/programs/obs-studio
-    ../../modules/programs/misc.nix
+    # ../../modules/programs/cava
+    # ../../modules/programs/discord
+    ../../modules/programs/eza
+    # ../../modules/programs/fastfetch
+    # ../../modules/programs/firefox
+    # ../../modules/programs/firejail
+    ../../modules/programs/fzf
+    # ../../modules/programs/games
+    ../../modules/programs/git
+    # ../../modules/programs/kitty
+    # ../../modules/programs/lazygit
+    # ../../modules/programs/localsend
+    # ../../modules/programs/mpv
+    ../../modules/programs/nixvim
+    # ../../modules/programs/obs-studio
+    # ../../modules/programs/spicetify
+    # ../../modules/programs/spotify-player
+    # ../../modules/programs/ssh
+    # ../../modules/programs/thunderbird
+    # ../../modules/programs/tmux
+    # ../../modules/programs/vscode
+    ../../modules/programs/yazi
+    ../../modules/programs/zoxide
+    ../../modules/programs/zsh
 
-    # ../../modules/games
-
-    ../../modules/sandbox/firejail
-    ../../modules/sandbox/flatpak
-
-    # ../../modules/virtual/libvirtd
-
-    ../../modules/scripts
-
-    ../../modules/proxy
+    # ../../modules/scripts
   ];
 
   # Define system packages here

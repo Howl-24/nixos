@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home-manager.sharedModules = [
     (_: {
       i18n.inputMethod = {
@@ -6,7 +7,10 @@
         type = "fcitx5";
         fcitx5 = {
           waylandFrontend = true;
-          addons = with pkgs; [ fcitx5-chinese-addons catppuccin-fcitx5 ];
+          addons = with pkgs; [
+            fcitx5-chinese-addons
+            catppuccin-fcitx5
+          ];
           settings = {
             inputMethod = {
               GroupOrder."0" = "Default";
@@ -19,13 +23,17 @@
               "Groups/0/Items/1".Name = "pinyin";
             };
             globalOptions = {
-              Behavior = { ActiveByDefault = false; };
+              Behavior = {
+                ActiveByDefault = false;
+              };
               Hotkey = {
                 EnumerateWithTriggerKeys = true;
                 EnumerateSkipFirst = false;
                 ModifierOnlyKeyTimeout = 250;
               };
-              "Behavior/DisabledAddons" = { "0" = "cloudpinyin"; };
+              "Behavior/DisabledAddons" = {
+                "0" = "cloudpinyin";
+              };
             };
             addons = {
               classicui.globalSection = {
@@ -43,7 +51,9 @@
                 "Hint Trigger" = "";
                 "One Time Hint Trigger" = "";
               };
-              pinyin.globalSection = { FirstRun = false; };
+              pinyin.globalSection = {
+                FirstRun = false;
+              };
             };
           };
         };

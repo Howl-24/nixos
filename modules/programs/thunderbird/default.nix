@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home-manager.sharedModules = [
     (_: {
       programs.thunderbird = {
@@ -7,18 +8,15 @@
           extraPolicies.ExtensionSettings = {
             "{47f5c9df-1d03-5424-ae9e-0613b69a9d2f}" = {
               installation_mode = "force_installed";
-              install_url =
-                "https://raw.githubusercontent.com/catppuccin/thunderbird/main/themes/mocha/mocha-mauve.xpi";
+              install_url = "https://raw.githubusercontent.com/catppuccin/thunderbird/main/themes/mocha/mocha-mauve.xpi";
             };
             "tbsync@jobisoft.de" = {
               installation_mode = "force_installed";
-              install_url =
-                "https://addons.thunderbird.net/thunderbird/downloads/latest/tbsync/addon-773590-latest.xpi";
+              install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/tbsync/addon-773590-latest.xpi";
             };
             "eas4tbsync@jobisoft.de" = {
               installation_mode = "force_installed";
-              install_url =
-                "https://addons.thunderbird.net/thunderbird/downloads/latest/eas-4-tbsync/addon-986338-latest.xpi";
+              install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/eas-4-tbsync/addon-986338-latest.xpi";
             };
           };
         };
@@ -37,8 +35,7 @@
 
               # TELEMETRY
               "datareporting.policy.dataSubmissionEnabled" = false;
-              "datareporting.policy.dataSubmissionPolicyBypassNotification" =
-                true;
+              "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
               "datareporting.healthreport.uploadEnabled" = false;
               "toolkit.telemetry.unified" = false;
               "toolkit.telemetry.enabled" = false;

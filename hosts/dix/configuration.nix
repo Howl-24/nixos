@@ -2,81 +2,85 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, opts, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  lib,
+  opts,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/hardware/gpu/${opts.gpu}
-    ../../modules/persist
-
     ../common.nix
+
+    ../../modules/system/blueman
+    ../../modules/system/disks
+    ../../modules/system/flatpak
+    ../../modules/system/fonts
+    ../../modules/system/garbage-collection
+    ../../modules/system/gpu/${opts.gpu}
+    ../../modules/system/greetd
+    ../../modules/system/impermanence
+    ../../modules/system/libvirtd
+    ../../modules/system/pipewire
+    ../../modules/system/proxy
+    ../../modules/system/snapper
 
     ../../modules/desktop/hyprland
     ../../modules/desktop/themes/catppuccin
 
-    ../../modules/programs/firefox
-    ../../modules/programs/kitty
-    ../../modules/programs/zsh
-    ../../modules/programs/tmux
-    ../../modules/programs/yazi
-    ../../modules/programs/fzf
-    ../../modules/programs/zoxide
-    ../../modules/programs/eza
-    ../../modules/programs/fastfetch
-    ../../modules/programs/git
-    ../../modules/programs/lazygit
     ../../modules/programs/btop
     ../../modules/programs/cava
-    ../../modules/programs/nixvim
-    # ../../modules/programs/neovim
-    ../../modules/programs/vscode
-    ../../modules/programs/ssh
-    ../../modules/programs/mpv
-    ../../modules/programs/spicetify
-    ../../modules/programs/thunderbird
     ../../modules/programs/discord
-    ../../modules/programs/obs-studio
-    ../../modules/programs/localsend
-    ../../modules/programs/games
+    ../../modules/programs/eza
+    ../../modules/programs/fastfetch
+    ../../modules/programs/firefox
     ../../modules/programs/firejail
-    ../../modules/programs/misc.nix
-
-    ../../modules/virtual/libvirtd
+    ../../modules/programs/fzf
+    ../../modules/programs/games
+    ../../modules/programs/git
+    ../../modules/programs/kitty
+    ../../modules/programs/lazygit
+    ../../modules/programs/localsend
+    ../../modules/programs/mpv
+    ../../modules/programs/nixvim
+    ../../modules/programs/obs-studio
+    ../../modules/programs/spicetify
+    ../../modules/programs/spotify-player
+    ../../modules/programs/ssh
+    ../../modules/programs/thunderbird
+    ../../modules/programs/tmux
+    ../../modules/programs/vscode
+    ../../modules/programs/yazi
+    ../../modules/programs/zoxide
+    ../../modules/programs/zsh
 
     ../../modules/scripts
-
-    ../../modules/services/flatpak
-    ../../modules/services/proxy
   ];
 
   # Define system packages here
   environment.systemPackages = with pkgs; [ ];
 
   # Home-manager config
-  home-manager.sharedModules = [ (_: { home.packages = with pkgs; [ ]; }) ];
+  home-manager.sharedModules = [
+    (_: {
+      home.packages = with pkgs; [
+        cbonsai
+        cowsay
+        cmatrix
+        fortune
+        ffmpeg
+        figlet
+        pipes
+        tty-clock
+      ];
+    })
+  ];
 
   # Kernel
-  boot.kernelPackages =
-    pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
-
-  # Snapshots
-  services.snapper = {
-    configs = {
-      home = {
-        SUBVOLUME = "/home";
-        ALLOW_USERS = [ "${opts.username}" ];
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-      };
-      nix = {
-        SUBVOLUME = "/nix";
-        ALLOW_USERS = [ "${opts.username}" ];
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-      };
-    };
-    snapshotInterval = "hourly";
-    cleanupInterval = "1d";
-  };
+  boot.kernelPackages = pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
 
   # Disks
   systemd.tmpfiles.rules = [
@@ -88,21 +92,39 @@
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/CC28EE4576AC5AE3";
     fsType = "ntfs-3g";
-    options = [ "uid=1000" "gid=100" "dmask=0022" "fmask=002" "exec" ];
+    options = [
+      "uid=1000"
+      "gid=100"
+      "dmask=0022"
+      "fmask=002"
+      "exec"
+    ];
     neededForBoot = false;
   };
 
   fileSystems."/mnt/hdd1" = {
     device = "/dev/disk/by-uuid/967611C64CDA39CC";
     fsType = "ntfs-3g";
-    options = [ "uid=1000" "gid=100" "dmask=0022" "fmask=002" "exec" ];
+    options = [
+      "uid=1000"
+      "gid=100"
+      "dmask=0022"
+      "fmask=002"
+      "exec"
+    ];
     neededForBoot = false;
   };
 
   fileSystems."/mnt/hdd2" = {
     device = "/dev/disk/by-uuid/F0E095F288CE2570";
     fsType = "ntfs-3g";
-    options = [ "uid=1000" "gid=100" "dmask=0022" "fmask=002" "exec" ];
+    options = [
+      "uid=1000"
+      "gid=100"
+      "dmask=0022"
+      "fmask=002"
+      "exec"
+    ];
     neededForBoot = false;
   };
 

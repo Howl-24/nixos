@@ -8,14 +8,12 @@ let
     Value = true;
     Status = "locked";
   };
-in {
+in
+{
   home-manager.sharedModules = [
     (_: {
-      home.file.".mozilla/firefox/default/chrome/userChrome.css".source =
-        ./chrome/userChrome.css;
-      home.file.".mozilla/firefox/default/chrome/userContent.css".source =
-        ./chrome/userContent.css;
-
+      home.file.".mozilla/firefox/default/chrome/userChrome.css".source = ./chrome/userChrome.css;
+      home.file.".mozilla/firefox/default/chrome/userContent.css".source = ./chrome/userContent.css;
       programs = {
         firefox = {
           enable = true;
@@ -47,51 +45,41 @@ in {
               };
               # ---- EXTENSIONS ----
               ExtensionSettings = {
-                "*".installation_mode =
-                  "blocked"; # blocks all addons except the ones specified below
+                "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
                 "tridactyl.vim@cmcaine.co.uk" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "uBlock0@raymondhill.net" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/traduzir-paginas-web/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/traduzir-paginas-web/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "addon@darkreader.org" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/styl-us/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/styl-us/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "{61a05c39-ad45-4086-946f-32adb0a40a9d}" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/linkding-extension/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/linkding-extension/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "newtaboverride@agenedia.com" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/new-tab-override/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/new-tab-override/latest.xpi";
                   installation_mode = "force_installed";
                 };
                 "{76aabc99-c1a8-4c1e-832b-d4f2941d5a7a}" = {
-                  install_url =
-                    "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
+                  install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
                   installation_mode = "force_installed";
                 };
               };
@@ -107,8 +95,7 @@ in {
                 "browser.tabs.groups.enabled" = true;
                 "browser.tabs.delayHidingAudioPlayingIconMS" = 0;
                 "layout.css.backdrop-filter.enabled" = true;
-                "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" =
-                  false;
+                "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
                 "privacy.userContext.enabled" = true;
                 "privacy.userContext.ui.enabled" = true;
                 "privacy.userContext.longPressBehavior" = 2;
@@ -116,15 +103,13 @@ in {
                 # Performance settings
                 "gfx.webrender.all" = true; # Force enable GPU acceleration
                 "media.ffmpeg.vaapi.enabled" = true;
-                "widget.dmabuf.force-enabled" =
-                  true; # Required in recent Firefoxes
+                "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
                 "reader.parse-on-load.force-enabled" = true;
                 "privacy.webrtc.legacyGlobalIndicator" = false;
 
                 # Use cloudflare for better security/privacy
                 "network.trr.mode" = 3; # 2 if your havng DNS problems
-                "network.trr.custom_uri" =
-                  "https://cloudflare-dns.com/dns-query";
+                "network.trr.custom_uri" = "https://cloudflare-dns.com/dns-query";
                 "network.trr.uri" = "https://cloudflare-dns.com/dns-query";
 
                 # Remove trackers
@@ -135,8 +120,7 @@ in {
                 "privacy.trackingprotection.socialtracking.enabled" = lock-true;
                 "privacy.trackingprotection.cryptomining.enabled" = lock-true;
                 "privacy.globalprivacycontrol.enabled" = lock-true;
-                "privacy.globalprivacycontrol.functionality.enabled" =
-                  lock-true;
+                "privacy.globalprivacycontrol.functionality.enabled" = lock-true;
                 "privacy.donottrackheader.enabled" = lock-true;
                 "privacy.donottrackheader.value" = 1;
                 "privacy.query_stripping.enabled" = lock-true;
@@ -186,15 +170,11 @@ in {
                 "browser.search.suggest.enabled.private" = lock-false;
                 "privacy.popups.disable_from_plugins" = 3;
                 "extensions.pocket.enabled" = lock-false;
-                "browser.newtabpage.activity-stream.section.highlights.includePocket" =
-                  lock-false;
-                "browser.newtabpage.activity-stream.feeds.section.topstories" =
-                  lock-false;
-                "browser.newtabpage.activity-stream.feeds.topsites" =
-                  lock-false;
+                "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
+                "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
+                "browser.newtabpage.activity-stream.feeds.topsites" = lock-false;
                 "browser.newtabpage.activity-stream.showSponsored" = lock-false;
-                "browser.newtabpage.activity-stream.showSponsoredTopSites" =
-                  lock-false;
+                "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
                 "layout.word_select.eat_space_to_next_word" = lock-false;
                 "browser.shell.checkDefaultBrowser" = lock-false;
                 "signon.rememberSignons" = lock-false;
@@ -208,8 +188,7 @@ in {
                 "datareporting.policy.dataSubmissionEnabled" = lock-false;
                 "breakpad.reportURL" = "";
                 "browser.tabs.crashReporting.sendReport" = lock-false;
-                "browser.crashReports.unsubmittedCheck.autoSubmit2" =
-                  lock-false;
+                "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock-false;
                 "browser.formfill.enable" = lock-false;
                 "extensions.formautofill.addresses.enabled" = lock-false;
                 "extensions.formautofill.available" = "off";
@@ -227,8 +206,7 @@ in {
                 "browser.aboutwelcome.enabled" = lock-false;
                 "browser.tabs.firefox-view" = lock-false;
                 "browser.startup.homepage_override.mstone" = "ignore";
-                "trailhead.firstrun.didSeeAboutWelcome" =
-                  true; # Disable welcome splash
+                "trailhead.firstrun.didSeeAboutWelcome" = true; # Disable welcome splash
                 "browser.newtab.url" = "about:blank";
                 "browser.newtabpage.activity-stream.enabled" = lock-false;
                 "browser.newtabpage.enhanced" = lock-false;
@@ -242,25 +220,19 @@ in {
                 "dom.security.https_only_mode_ever_enabled" = lock-true;
                 "identity.fxaccounts.enabled" = lock-false;
                 "app.update.auto" = false;
-                "browser.startup.homepage" =
-                  "https://howl-24.github.io/homepage/";
+                "browser.startup.homepage" = "https://howl-24.github.io/homepage/";
                 "browser.bookmarks.restore_default_bookmarks" = false;
                 "browser.ctrlTab.recentlyUsedOrder" = false;
                 "browser.discovery.enabled" = false;
                 "browser.laterrun.enabled" = false;
-                "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
-                  false;
-                "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-                  false;
+                "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+                "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
                 "browser.newtabpage.activity-stream.feeds.snippets" = false;
-                "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" =
-                  "";
-                "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" =
-                  "";
+                "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+                "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
                 "browser.protections_panel.infoMessage.seen" = true;
                 "browser.ssb.enabled" = true;
-                "browser.toolbars.bookmarks.visibility" =
-                  "never"; # always, never, newtab
+                "browser.toolbars.bookmarks.visibility" = "never"; # always, never, newtab
                 #"browser.urlbar.placeholderName" = "google";
                 "browser.urlbar.suggest.openpage" = false;
                 "datareporting.policy.dataSubmissionEnable" = false;
@@ -268,13 +240,10 @@ in {
 
                 "extensions.screenshots.disabled" = lock-true;
                 "extensions.getAddons.showPane" = lock-false;
-                "extensions.htmlaboutaddons.recommendations.enabled" =
-                  lock-false;
-                "extensions.extensions.activeThemeID" =
-                  "firefox-compact-dark@mozilla.org";
+                "extensions.htmlaboutaddons.recommendations.enabled" = lock-false;
+                "extensions.extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
                 # "extensions.update.enabled" = false;
-                "extensions.webcompat.enable_picture_in_picture_overrides" =
-                  true;
+                "extensions.webcompat.enable_picture_in_picture_overrides" = true;
                 "extensions.webcompat.enable_shims" = true;
                 "extensions.webcompat.perform_injections" = true;
                 "extensions.webcompat.perform_ua_overrides" = true;
@@ -335,8 +304,10 @@ in {
                       "new-tab-button"
                       "alltabs-button"
                     ];
-                    PersonalToolbar =
-                      [ "personal-bookmarks" "managed-bookmarks" ];
+                    PersonalToolbar = [
+                      "personal-bookmarks"
+                      "managed-bookmarks"
+                    ];
                   };
                 };
               };
@@ -352,7 +323,10 @@ in {
                 force = true;
                 default = "ddg";
                 privateDefault = "ddg";
-                order = [ "ddg" "google" ];
+                order = [
+                  "ddg"
+                  "google"
+                ];
               };
             };
           };

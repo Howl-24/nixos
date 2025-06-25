@@ -1,11 +1,14 @@
-{ inputs, lib, ... }: {
+{ inputs, lib, ... }:
+{
   home-manager.sharedModules = [
-    ({ pkgs, ... }:
-      let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-      in {
+    (
+      { pkgs, ... }:
+      let
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+      in
+      {
         # import the flake's module for your system
         imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-
         # configure spicetify :)
         programs.spicetify = {
           enable = true;
@@ -21,15 +24,15 @@
             # fullAppDisplay
             # hidePodcasts
           ];
-          enabledCustomApps = with spicePkgs.apps;
-            [
-              # reddit
-              # lyricsPlus
-              # marketplace
-              # localFiles
-              # ncsVisualizer
-            ];
+          enabledCustomApps = with spicePkgs.apps; [
+            # reddit
+            # lyricsPlus
+            # marketplace
+            # localFiles
+            # ncsVisualizer
+          ];
         };
-      })
+      }
+    )
   ];
 }
