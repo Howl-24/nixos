@@ -42,6 +42,7 @@
     ../../modules/obs-studio
     ../../modules/pipewire
     ../../modules/proxy
+    ../../modules/rice
     ../../modules/scripts/system
     ../../modules/snapper
     ../../modules/spicetify
@@ -49,6 +50,7 @@
     ../../modules/ssh
     ../../modules/thunderbird
     ../../modules/tmux
+    ../../modules/tools
     ../../modules/vscode
     ../../modules/yazi
     ../../modules/zoxide
@@ -64,16 +66,7 @@
   # Home-manager config
   home-manager.sharedModules = [
     (_: {
-      home.packages = with pkgs; [
-        cbonsai
-        cowsay
-        cmatrix
-        fortune
-        ffmpeg
-        figlet
-        pipes
-        tty-clock
-      ];
+      home.packages = with pkgs; [ ];
     })
   ];
 
