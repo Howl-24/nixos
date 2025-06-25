@@ -5,19 +5,16 @@
       lualine = {
         enable = true;
         settings = {
-          #iconsEnabled = true;
+          iconsEnabled = true;
           extensions = [
-            "nvim-tree"
-            "nvim-dap-ui"
-            "toggleterm"
             "quickfix"
           ];
           options = {
+            theme = "catppuccin";
             globalstatus = true;
             disabled_filetypes = {
               statusline = [
-                "dashboard"
-                "alpha"
+                "snack_dashboard"
               ];
             };
             component_separators.left = "";

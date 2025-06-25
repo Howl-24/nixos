@@ -23,11 +23,19 @@
         };
         globals.mapleader = " ";
         extraPackages = with pkgs; [
+          gcc
+          ripgrep
+          lynx
+          fd
+          ghostscript
           # Formatters
           nixfmt-rfc-style
           shfmt
           stylua
+          prettier
           prettierd
+          isort
+          black
         ];
       };
     })

@@ -74,13 +74,13 @@
           separator_style = "thin"; # “slant”, “padded_slant”, “slope”, “padded_slope”, “thick”, “thin”
           indicator.icon = "▎";
           modified_icon = "●";
-          buffer_close_icon = "";
-          close_icon = "";
-          left_trunc_marker = "";
-          right_trunc_marker = "";
+          buffer_close_icon = "󰅖";
+          close_icon = "";
+          left_trunc_marker = " ";
+          right_trunc_marker = " ";
           numbers = "ordinal";
-          tab_size = 21;
-          # diagnostics = "nvim_lsp";
+          tab_size = 18;
+          diagnostics = "nvim_lsp";
           show_buffer_icons = true;
           show_buffer_close_icons = false;
         };

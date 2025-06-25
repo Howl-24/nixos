@@ -65,7 +65,7 @@
                   icon = " ";
                   key = "n";
                   desc = "New File";
-                  action = ";ene | startinsert";
+                  action = ":ene | startinsert";
                 }
                 {
                   icon = " ";
