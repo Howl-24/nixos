@@ -68,12 +68,21 @@
         xdotool
         yad
         # socat # for and autowaybar.sh
-        # jq # for and autowaybar.sh
+        jq # for and autowaybar.sh
       ];
 
       xdg.configFile."hypr/icons" = {
         source = ./icons;
         recursive = true;
+      };
+
+      # Set wallpaper
+      services.hyprpaper = {
+        enable = true;
+        settings = {
+          preload = [ "${../themes/wallpapers/${opts.hyprland.wallpaper}}" ];
+          wallpaper = [ ",${../themes/wallpapers/${opts.hyprland.wallpaper}}" ];
+        };
       };
 
       wayland.windowManager.hyprland = {
@@ -110,6 +119,7 @@
             "QT_AUTO_SCREEN_SCALE_FACTOR,1"
             "WLR_RENDERER_ALLOW_SOFTWARE,1"
             "NIXPKGS_ALLOW_UNFREE,1"
+            "EDITOR,${opts.editor}"
           ];
           exec-once = [
             "hyprctl dispatch workspace 1"
@@ -388,7 +398,7 @@
               }" # killactive, kill the window on focus
               "$mainMod, delete, exit" # kill hyperland session
               "$mainMod, W, togglefloating" # toggle the window on focus to float
-              "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
+              "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to group
               "ALT, return, fullscreen" # toggle the window on focus to fullscreen
               "$mainMod ALT, L, exec, hyprlock" # lock screen
               "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
@@ -397,8 +407,8 @@
               # Applications/Programs
               "$mainMod, Return, exec, $terminal"
               "$mainMod, T, exec, $terminal"
-              "$mainMod, F, exec, $terminalFileManager"
-              "$mainMod, E, exec, $editor"
+              "$mainMod, E, exec, $terminalFileManager"
+              "$mainMod, N, exec, $editor"
               "$mainMod, B, exec, $browser"
               "$mainMod, M, exec, $emailClient"
               "$mainMod SHIFT, C, exec, code"
@@ -545,10 +555,7 @@
             "$mainMod, mouse:272, movewindow"
             "$mainMod, mouse:273, resizewindow"
           ];
-          monitor = [
-            "desc:SAC G7u Pro 0001, 3840x2160@160, 0x0, 1.5"
-            "desc:KOS KOIOS K2718UD 0000000000000, 3840x2160@60, -1440x-600, 1.5, transform, 1"
-          ];
+          monitor = opts.hyprland.monitor;
         };
         extraConfig = ''
           binds {
@@ -561,8 +568,7 @@
           monitor=,preferred,auto,1
 
           # Binds workspaces to my monitors only (find desc with: hyprctl monitors)
-          workspace = 1, monitor:desc:SAC G7u Pro 0001, default:true;
-          workspace = 10, monitor:desc:KOS KOIOS K2718UD 0000000000000, default:true;
+          ${opts.hyprland.workspaceBind}
         '';
       };
     })

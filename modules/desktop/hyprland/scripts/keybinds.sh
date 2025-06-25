@@ -38,8 +38,8 @@ yad \
   --timeout-indicator=bottom \
   "SUPER Return" "Launch terminal" "$_terminal" \
   "SUPER T" "Launch terminal" "$_terminal" \
-  "SUPER F" "Launch file manager" "$_terminal_FM" \
-  "SUPER E" "Launch editor" "$_editor" \
+  "SUPER E" "Launch file manager" "$_terminal_FM" \
+  "SUPER N" "Launch editor" "$_editor" \
   "SUPER B" "Launch browser" "$_browser" \
   "SUPER M" "Launch email client" "$_email" \
   "SUPER SHIFT S" "Launch spotify" "spotify" \
@@ -109,5 +109,7 @@ yad \
   "SUPER ↓" "Move focus down" "movefocus d" \
   "ALT Tab" "Move focus down" "movefocus d" \
   "SUPER 1-0" "Switch to workspace 1-10" "workspace 1-10" \
-  "SUPER SHIFT 1-0" "Move to workspace 1-10" "movetoworkspace 1-10" \
-  "SUPER SHIFT 1-0" "Silently move to workspace 1-10" "movetoworkspacesilent 1-10"# "SUPER M" "Online music" "scripts/rofimusic.sh" # "SUPER Z" "Launch emoji picker" "scripts/rofi.sh emoji" \
+  "SUPER SHIFT 1-0" "Move to workspace 1-10" "movetoworkspace 1-10"
+# "SUPER SHIFT 1-0" "Silently move to workspace 1-10" "movetoworkspacesilent 1-10"#
+# "SUPER M" "Online music" "scripts/rofimusic.sh"
+# "SUPER Z" "Launch emoji picker" "scripts/rofi.sh emoji" \

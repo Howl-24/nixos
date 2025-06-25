@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Wallpaper directories
-HORIZONTAL_WALLPAPER_DIR="$HOME/nixos/modules/themes/wallpapers/horizontal/"
-VERTICAL_WALLPAPER_DIR="$HOME/nixos/modules/themes/wallpapers/vertical/"
+HORIZONTAL_WALLPAPER_DIR="$HOME/nixos/modules/desktop/themes/wallpapers/horizontal/"
+VERTICAL_WALLPAPER_DIR="$HOME/nixos/modules/desktop/themes/wallpapers/vertical/"
 
 # Get all monitor information
 MONITORS=$(hyprctl monitors -j | jq -c '.[]')
