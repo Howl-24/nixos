@@ -6,50 +6,57 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/hardware/gpu/${opts.gpu}
+    ../../modules/persist
 
     ../common.nix
 
     ../../modules/desktop/hyprland
+    ../../modules/desktop/themes/catppuccin
 
-    ../../modules/programs/browser/firefox
-    ../../modules/programs/terminal/kitty
-    ../../modules/programs/shell/zsh
-    ../../modules/programs/cli/tmux
-    ../../modules/programs/cli/yazi
-    ../../modules/programs/cli/zoxide
-    ../../modules/programs/cli/eza
-    ../../modules/programs/cli/fastfetch
-    ../../modules/programs/cli/git
-    ../../modules/programs/cli/lazygit
-    ../../modules/programs/cli/btop
-    ../../modules/programs/cli/cava
-    ../../modules/programs/editor/neovim
-    ../../modules/programs/editor/vscode
+    ../../modules/programs/firefox
+    ../../modules/programs/kitty
+    ../../modules/programs/zsh
+    ../../modules/programs/tmux
+    ../../modules/programs/yazi
+    ../../modules/programs/fzf
+    ../../modules/programs/zoxide
+    ../../modules/programs/eza
+    ../../modules/programs/fastfetch
+    ../../modules/programs/git
+    ../../modules/programs/lazygit
+    ../../modules/programs/btop
+    ../../modules/programs/cava
+    ../../modules/programs/nixvim
+    # ../../modules/programs/neovim
+    ../../modules/programs/vscode
     ../../modules/programs/ssh
-    ../../modules/programs/media/mpv
-    ../../modules/programs/media/spicetify
-    ../../modules/programs/media/thunderbird
-    ../../modules/programs/media/discord
-    ../../modules/programs/media/obs-studio
-    ../../modules/programs/game
-    ../../modules/programs/misc
-    ../../modules/programs/sandbox/firejail
-    ../../modules/programs/sandbox/flatpak
+    ../../modules/programs/mpv
+    ../../modules/programs/spicetify
+    ../../modules/programs/thunderbird
+    ../../modules/programs/discord
+    ../../modules/programs/obs-studio
+    ../../modules/programs/localsend
+    ../../modules/programs/games
+    ../../modules/programs/firejail
+    ../../modules/programs/misc.nix
 
-    # ../../modules/scripts
+    ../../modules/virtual/libvirtd
 
-    ../../modules/themes/catppuccin
-  ] ++ lib.optional opts.persist ../../modules/persist
-    ++ lib.optional opts.proxy ../../modules/programs/proxy
-    ++ lib.optional opts.virtual ../../modules/virtual/libvirtd;
+    ../../modules/scripts
 
-  networking.hostName = opts.hostname; # Define your hostname.
+    ../../modules/services/flatpak
+    ../../modules/services/proxy
+  ];
+
+  # Define system packages here
+  environment.systemPackages = with pkgs; [ ];
 
   # Home-manager config
   home-manager.sharedModules = [ (_: { home.packages = with pkgs; [ ]; }) ];
 
-  # Define system packages here
-  environment.systemPackages = with pkgs; [ ];
+  # Kernel
+  boot.kernelPackages =
+    pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
 
   # Snapshots
   services.snapper = {
@@ -73,9 +80,9 @@
 
   # Disks
   systemd.tmpfiles.rules = [
-    "d /mnt/ssd 0775 howl users -"
-    "d /mnt/hdd1 0775 howl users -"
-    "d /mnt/hdd2 0775 howl users -"
+    "d /mnt/ssd 0775 ${opts.username} users -"
+    "d /mnt/hdd1 0775 ${opts.username} users -"
+    "d /mnt/hdd2 0775 ${opts.username} users -"
   ];
 
   fileSystems."/mnt/ssd" = {
@@ -99,20 +106,9 @@
     neededForBoot = false;
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
 }

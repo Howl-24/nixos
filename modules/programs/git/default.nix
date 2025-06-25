@@ -3,8 +3,8 @@
     (_: {
       programs.git = {
         enable = true;
-        userName = "${opts.gitUserName}";
-        userEmail = "${opts.gitUserEmail}";
+        userName = "${opts.git.userName}";
+        userEmail = "${opts.git.userEmail}";
       };
     })
   ];

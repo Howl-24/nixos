@@ -1,6 +1,8 @@
 { inputs, pkgs, lib, opts, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
+  networking.hostName = opts.hostname; # Define your hostname.
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
@@ -16,7 +18,6 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelModules = lib.optional opts.virtual "kvm";
   };
 
   # Enable networking
@@ -75,6 +76,9 @@
 
   console.keyMap = opts.consoleKeymap; # Configure console keymap
 
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = opts.openssh.enable;
+
   # Display manager
   services.greetd = {
     enable = true;
@@ -89,8 +93,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [ pkgs.greetd.tuigreet wget vim ] ++ lib.optional opts.proxy xray;
+  environment.systemPackages = with pkgs; [ pkgs.greetd.tuigreet wget vim ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -100,8 +103,7 @@
       ${opts.username} = {
         initialHashedPassword = opts.userpasswd;
         isNormalUser = true;
-        extraGroups = [ "networkmanager" "wheel" ]
-          ++ lib.optional opts.virtual "libvirtd";
+        extraGroups = [ "networkmanager" "wheel" ];
       };
     };
   };
@@ -160,4 +162,12 @@
       nix.gc.frequency = "weekly";
     })
   ];
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

@@ -1,5 +1,5 @@
 { pkgs, lib, ... }:
-pkgs.writeShellScriptBin "tproxy-off" ''
+pkgs.writeShellScriptBin "tproxy-on" ''
 
   sudo ip route add local default dev lo table 100 # 添加路由表 100
   sudo ip rule add fwmark 1 table 100              # 为路由表 100 设定规则

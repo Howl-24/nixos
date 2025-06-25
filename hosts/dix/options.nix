@@ -1,5 +1,14 @@
 {
-  # User configuration
+  hostname = "dix";
+  rootpasswd =
+    "$6$1bNtqKFsObhMC1OG$THnog0HqmR/GnN.0IwndZzuijVMiV0cZIPUjmCvDs6gsjHAc.FYfcIlKmiMx2hy2gbd814Br1uNAhiyKl4W9g.";
+  gpu = "nvidia";
+  locale = "en_US.UTF-8";
+  timezone = "Asia/Shanghai";
+  kbdLayout = "us";
+  kbdVariant = "";
+  consoleKeymap = "us";
+
   username = "howl";
   userpasswd =
     "$6$.FVrKngH1eXjNYi9$lsTAUQvvJyB209fhkf3g5E12iCcgNdDZKW0XTwCp7i3lNwM8gjNq3kRgjW4WIBV68YETysoDCHhKtSIncPT3n1";
@@ -8,23 +17,30 @@
   terminalFileManager = "yazi";
   browser = "firefox";
   emailClient = "thunderbird";
-  wallpaper = "black.png";
-  gitUserName = "howl";
-  gitUserEmail = "howell.ding@outlook.com";
 
-  # System configuration
-  rootpasswd =
-    "$6$1bNtqKFsObhMC1OG$THnog0HqmR/GnN.0IwndZzuijVMiV0cZIPUjmCvDs6gsjHAc.FYfcIlKmiMx2hy2gbd814Br1uNAhiyKl4W9g.";
-  hostname = "dix";
-  gpu = "nvidia";
-  locale = "en_US.UTF-8";
-  timezone = "Asia/Shanghai";
-  kbdLayout = "us";
-  kbdVariant = "";
-  consoleKeymap = "us";
+  hyprland = {
+    monitor = [
+      "desc:SAC G7u Pro 0001, 3840x2160@160, 0x0, 1.5"
+      "desc:KOS KOIOS K2718UD 0000000000000, 3840x2160@60, -1440x-600, 1.5, transform, 1"
+    ];
+    workspaceBind = ''
+      workspace = 1, monitor:desc:SAC G7u Pro 0001, default:true;
+      workspace = 10, monitor:desc:KOS KOIOS K2718UD 0000000000000, default:true;
+    '';
+    wallpaper = "black.png";
+  };
 
-  # Optional function
-  persist = true;
-  proxy = true;
-  virtual = true;
+  hyprlock = {
+    monitor1 = "DP-1";
+    monitor2 = "HDMI-A-1";
+    background1 = "horizontal/mocha/greenbus.jpg";
+    background2 = "vertical/anime/76257949_p0.jpg";
+  };
+
+  git = {
+    userName = "howl";
+    userEmail = "howell.ding@outlook.com";
+  };
+
+  openssh.enable = true;
 }
