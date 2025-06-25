@@ -67,7 +67,7 @@
           };
         };
         keymap = {
-          manager.prepend_keymap = [
+          mgr.prepend_keymap = [
             {
               on = "<C-d>";
               run = "plugin diff";
@@ -94,6 +94,7 @@
           toggle-pane = pkgs.yaziPlugins.toggle-pane;
         };
       };
+      home.packages = with pkgs; [ mediainfo glow ];
     })
   ];
 }
