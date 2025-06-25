@@ -15,49 +15,47 @@
     ./hardware-configuration.nix
     ../common.nix
 
-    # ../../modules/system/blueman
-    ../../modules/system/disks
-    # ../../modules/system/flatpak
-    # ../../modules/system/fonts
-    ../../modules/system/garbage-collection
-    ../../modules/system/gpu/${opts.gpu}
-    # ../../modules/system/greetd
-    # ../../modules/system/impermanence
-    # ../../modules/system/libvirtd
-    # ../../modules/system/pipewire
-    ../../modules/system/proxy
-    # ../../modules/system/snapper
+    # ../../modules/blueman
+    ../../modules/btop
+    # ../../modules/cava
+    # ../../modules/discord
+    ../../modules/disks
+    ../../modules/eza
+    # ../../modules/fastfetch
+    # ../../modules/firefox
+    # ../../modules/firejail
+    # ../../modules/flatpak
+    # ../../modules/fonts
+    ../../modules/fzf
+    # ../../modules/games
+    ../../modules/garbage-collection
+    ../../modules/git
+    ../../modules/gpu/${opts.gpu}
+    # ../../modules/greetd
+    # ../../modules/impermanence
+    # ../../modules/kitty
+    # ../../modules/lazygit
+    # ../../modules/libvirtd
+    # ../../modules/localsend
+    # ../../modules/mpv
+    ../../modules/nixvim
+    # ../../modules/obs-studio
+    # ../../modules/pipewire
+    ../../modules/proxy
+    ../../modules/scripts/system
+    # ../../modules/snapper
+    # ../../modules/spicetify
+    # ../../modules/spotify-player
+    # ../../modules/ssh
+    # ../../modules/thunderbird
+    # ../../modules/tmux
+    # ../../modules/vscode
+    ../../modules/yazi
+    ../../modules/zoxide
+    ../../modules/zsh
 
     # ../../modules/desktop/hyprland
     # ../../modules/desktop/themes/catppuccin
-
-    ../../modules/programs/btop
-    # ../../modules/programs/cava
-    # ../../modules/programs/discord
-    ../../modules/programs/eza
-    # ../../modules/programs/fastfetch
-    # ../../modules/programs/firefox
-    # ../../modules/programs/firejail
-    ../../modules/programs/fzf
-    # ../../modules/programs/games
-    ../../modules/programs/git
-    # ../../modules/programs/kitty
-    # ../../modules/programs/lazygit
-    # ../../modules/programs/localsend
-    # ../../modules/programs/mpv
-    ../../modules/programs/nixvim
-    # ../../modules/programs/obs-studio
-    # ../../modules/programs/spicetify
-    # ../../modules/programs/spotify-player
-    # ../../modules/programs/ssh
-    # ../../modules/programs/thunderbird
-    # ../../modules/programs/tmux
-    # ../../modules/programs/vscode
-    ../../modules/programs/yazi
-    ../../modules/programs/zoxide
-    ../../modules/programs/zsh
-
-    # ../../modules/scripts
   ];
 
   # Define system packages here
