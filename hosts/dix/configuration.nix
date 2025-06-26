@@ -18,6 +18,7 @@
     ../../modules/blueman
     ../../modules/btop
     ../../modules/cava
+    # ../../modules/docker
     ../../modules/discord
     ../../modules/disks
     ../../modules/eza
@@ -41,7 +42,7 @@
     ../../modules/nixvim
     ../../modules/obs-studio
     ../../modules/pipewire
-    ../../modules/proxy
+    ../../modules/proxy/tproxy/default
     ../../modules/rice
     ../../modules/scripts/system
     ../../modules/snapper

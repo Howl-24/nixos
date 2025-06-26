@@ -16,7 +16,7 @@
     ../common.nix
 
     # ../../modules/blueman
-    ../../modules/btop
+    # ../../modules/btop
     # ../../modules/cava
     ../../modules/docker
     # ../../modules/discord
@@ -43,7 +43,7 @@
     # ../../modules/obs-studio
     # ../../modules/pipewire
     ../../modules/proxy/normal/docker
-    # ../../modules/rice
+    ../../modules/rice
     ../../modules/scripts/system
     # ../../modules/snapper
     # ../../modules/spicetify
