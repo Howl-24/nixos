@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "tproxy-off" ''
   sudo ip route del local default dev lo table 100
   sudo ip rule del fwmark 1 table 100

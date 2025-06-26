@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "tproxy-on" ''
 
   sudo ip route add local default dev lo table 100 # 添加路由表 100

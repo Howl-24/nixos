@@ -45,6 +45,7 @@
     ../../modules/proxy/tproxy/default
     ../../modules/rice
     ../../modules/scripts/system
+    ../../modules/scripts/user
     ../../modules/snapper
     ../../modules/spicetify
     ../../modules/spotify-player
