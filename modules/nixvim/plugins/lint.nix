@@ -6,8 +6,8 @@
       lintersByFt = {
         #text = [ "write_good" ];
         markdownlint = [ "markdownlint" ];
-        c = [ "clangtidy" ];
-        cpp = [ "clangtidy" ];
+        # c = [ "clangtidy" ];
+        # cpp = [ "clangtidy" ];
         # css = ["eslint_d"];
         gitcommit = [ "commitlint" ];
         # go = [ "golangcilint" ];
@@ -17,7 +17,7 @@
         lua = [ "luacheck" ];
         nix = [ "nix" ];
         python = [ "ruff" ];
-        # sh = ["shellcheck"];
+        sh = [ "shellcheck" ];
         # typescript = ["eslint_d"];
         # typescriptreact = ["eslint_d"];
         yaml = [ "yamllint" ];

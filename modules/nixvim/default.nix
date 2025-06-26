@@ -36,6 +36,15 @@
           prettierd
           isort
           black
+          # Linters
+          commitlint
+          luajitPackages.luacheck
+          markdownlint-cli
+          nodePackages.jsonlint
+          pylint
+          ruff
+          shellcheck
+          yamllint
         ];
       };
     })
