@@ -1,5 +1,5 @@
 { ... }:
 {
   services.xray.enable = true;
-  services.xray.settingsFile = ./tproxy.json;
+  services.xray.settingsFile = ./config.json;
 }
