@@ -25,6 +25,10 @@
         },
         "break",
         {
+            "type": "wm",
+            "keyColor": "blue"
+        },
+	{
             "type": "shell",
             "keyColor": "blue"
         },
@@ -72,11 +76,6 @@
         {
             "type": "localip",
             "compact": true,
-            "keyColor": "green"
-        },
-        {
-            "type": "publicip",
-            "timeout": 1000,
             "keyColor": "green"
         },
         "break",

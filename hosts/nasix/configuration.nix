@@ -30,12 +30,16 @@
     ../../modules/fzf
     # ../../modules/games
     ../../modules/garbage-collection
+    # ../../modules/gimp
     ../../modules/git
     ../../modules/gpu/${opts.gpu}
     # ../../modules/greetd
     # ../../modules/impermanence
+    # ../../modules/imv
+    ../../modules/jellyfin
     # ../../modules/kitty
     # ../../modules/lazygit
+    # ../../modules/libreoffice
     # ../../modules/libvirtd
     # ../../modules/localsend
     # ../../modules/mpv
@@ -44,6 +48,7 @@
     # ../../modules/pipewire
     ../../modules/proxy/normal/docker
     ../../modules/rice
+    ../../modules/samba
     ../../modules/scripts/system
     ../../modules/scripts/user
     # ../../modules/snapper
@@ -52,9 +57,9 @@
     # ../../modules/ssh
     # ../../modules/thunderbird
     # ../../modules/tmux
-    ../../modules/tools
     # ../../modules/vscode
     ../../modules/yazi
+    # ../../modules/zathura
     ../../modules/zoxide
     ../../modules/zsh
 
@@ -68,6 +73,12 @@
   # Home-manager config
   home-manager.sharedModules = [ (_: { home.packages = with pkgs; [ ]; }) ];
 
+  hardware.nvidia.prime = {
+    # Make sure to use the correct Bus ID values for your system!
+    nvidiaBusId = "PCI:01:0:0";
+    amdgpuBusId = "PCI:07:0:0";
+  };
+
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/d850efcf-11d2-4a43-9a13-a61d362e1cd3";
     fsType = "ext4";
@@ -78,13 +89,13 @@
     neededForBoot = false;
   };
 
-  fileSystems."/mnt/hdd1" = {
+  fileSystems."/mnt/smb" = {
     device = "/dev/disk/by-uuid/04CEA1884141A7D0";
     fsType = "ntfs-3g";
     options = [
       "uid=1000"
       "gid=100"
-      "dmask=0022"
+      "dmask=0002"
       "fmask=002"
       "exec"
     ];
@@ -97,7 +108,7 @@
     options = [
       "uid=1000"
       "gid=100"
-      "dmask=0022"
+      "dmask=0002"
       "fmask=002"
       "exec"
     ];
@@ -241,7 +252,6 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    8096
     9997
     9998
     9999

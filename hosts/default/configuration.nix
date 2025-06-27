@@ -30,20 +30,26 @@
     ../../modules/fzf
     # ../../modules/games
     ../../modules/garbage-collection
+    # ../../modules/gimp
     ../../modules/git
     ../../modules/gpu/${opts.gpu}
     # ../../modules/greetd
     # ../../modules/impermanence
+    # ../../modules/imv
+    # ../../modules/jellyfin
     # ../../modules/kitty
     # ../../modules/lazygit
+    # ../../modules/libreoffice
     # ../../modules/libvirtd
     # ../../modules/localsend
     # ../../modules/mpv
     ../../modules/nixvim
     # ../../modules/obs-studio
     # ../../modules/pipewire
+    # ../../modules/productivity
     ../../modules/proxy/tproxy/default
     # ../../modules/rice
+    # ../../modules/samba
     ../../modules/scripts/system
     ../../modules/scripts/user
     # ../../modules/snapper
@@ -52,9 +58,10 @@
     # ../../modules/ssh
     # ../../modules/thunderbird
     # ../../modules/tmux
-    ../../modules/tools
+    ../../modules/utilities
     # ../../modules/vscode
     ../../modules/yazi
+    # ../../modules/zathura
     ../../modules/zoxide
     ../../modules/zsh
 

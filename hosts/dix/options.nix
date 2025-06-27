@@ -25,7 +25,7 @@
       workspace = 1, monitor:desc:SAC G7u Pro 0001, default:true;
       workspace = 10, monitor:desc:KOS KOIOS K2718UD 0000000000000, default:true;
     '';
-    wallpaper = "black.png";
+    wallpaper = "universal/black.png";
   };
 
   hyprlock = {

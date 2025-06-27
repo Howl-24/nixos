@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   imports = [
     ./programs/waybar
     ./programs/wlogout
@@ -143,7 +142,10 @@
                 "QT_AUTO_SCREEN_SCALE_FACTOR,1"
                 "WLR_RENDERER_ALLOW_SOFTWARE,1"
                 "NIXPKGS_ALLOW_UNFREE,1"
+                "NIXOS_XDG_OPEN_USE_PORTAL,1"
+                "TERMINAL,${opts.terminal}"
                 "EDITOR,${opts.editor}"
+                "BROWSER,${opts.browser}"
               ];
               exec-once = [
                 "hyprctl dispatch workspace 1"
