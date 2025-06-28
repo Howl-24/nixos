@@ -1,4 +1,4 @@
-{ ... }:
+{ opts, ... }:
 {
   services.samba = {
     enable = true;
@@ -11,12 +11,13 @@
         "passwd program" = "/run/wrappers/bin/passwd %u";
         security = "user";
       };
-      public = {
+      private = {
         browseable = "yes";
-        comment = "Public samba share.";
-        "guest ok" = "yes";
+        comment = "Private samba share.";
         path = "/mnt/smb";
+        "valid users" = [ "${opts.username}" ];
         "read only" = "no";
+        "writable" = "yes";
       };
     };
   };
