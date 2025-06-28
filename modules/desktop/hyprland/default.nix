@@ -147,6 +147,7 @@
                 "EDITOR,${opts.editor}"
                 "BROWSER,${opts.browser}"
               ];
+
               exec-once = [
                 "hyprctl dispatch workspace 1"
                 "waybar"

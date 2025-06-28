@@ -1,4 +1,11 @@
-{ inputs, pkgs, lib, opts, ... }: {
+{
+  inputs,
+  pkgs,
+  lib,
+  opts,
+  ...
+}:
+{
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   networking.hostName = opts.hostname; # Define your hostname.
@@ -83,6 +90,16 @@
         # Packages that don't require configuration. If you're looking to configure a program see the /modules dir
         home.packages = with pkgs; [ ];
       };
+  };
+
+  environment.sessionVariables = {
+    # These are the defaults, and xdg.enable does set them, but due to load
+    # order, they're not set before environment.variables are set, which could
+    # cause race conditions.
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_BIN_HOME = "$HOME/.local/bin";
   };
 
   # This value determines the NixOS release from which the default
