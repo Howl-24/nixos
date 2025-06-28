@@ -33,16 +33,9 @@
             update = "sudo nixos-rebuild switch";
           };
 
-          envExtra = ''
-            export PATH="$HOME/.local/bin:$PATH"
-          '';
+          envExtra = '''';
 
-          initContent = ''
-            case $- in # check shell options
-                *i*) ;; # interactive shell
-                  *) return;; # don't do anything
-            esac
-          '';
+          initContent = '''';
         };
       }
     )

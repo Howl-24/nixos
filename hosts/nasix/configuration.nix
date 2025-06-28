@@ -19,6 +19,7 @@
     # ../../modules/btop
     # ../../modules/cava
     ../../modules/docker
+    # ../../modules/direnv
     # ../../modules/discord
     ../../modules/disks
     ../../modules/eza
@@ -95,21 +96,8 @@
     options = [
       "uid=1000"
       "gid=100"
-      "dmask=0002"
-      "fmask=002"
-      "exec"
-    ];
-    neededForBoot = false;
-  };
-
-  fileSystems."/mnt/Passport" = {
-    device = "/dev/disk/by-uuid/E4161DFCA3CBB47B";
-    fsType = "ntfs-3g";
-    options = [
-      "uid=1000"
-      "gid=100"
-      "dmask=0002"
-      "fmask=002"
+      "dmask=0000"
+      "fmask=0000"
       "exec"
     ];
     neededForBoot = false;

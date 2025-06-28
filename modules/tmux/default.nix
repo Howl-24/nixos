@@ -16,11 +16,15 @@ in
     (_: {
       programs.tmux = {
         enable = true;
-        clock24 = true;
+        mouse = true;
+        prefix = "C-a";
         keyMode = "vi";
-        # terminal = "tmux-256color";
-        # terminal = "screen-256color";
+        clock24 = true;
+        escapeTime = 10;
+        focusEvents = true;
         historyLimit = 100000;
+        terminal = "tmux-256color";
+        # terminal = "screen-256color";
         plugins = with pkgs.tmuxPlugins; [
           dreamsofcode-io-catppuccin-tmux
           # catppuccin
@@ -28,13 +32,8 @@ in
           vim-tmux-navigator
         ];
         extraConfig = ''
-          unbind C-b
-          set -g prefix C-a
-          bind C-a send-prefix
-
           # Options
           set -g @catppuccin_flavour 'mocha'
-          set -g mouse on
           set -g allow-rename off
           set -g status-position top
           set -g base-index 1
@@ -42,6 +41,7 @@ in
           set -g renumber-windows on
           set-window-option -g pane-base-index 1
           set -ga terminal-overrides ",*:Tc"
+
 
           # Tmux binds
           bind r command-prompt "rename-window %%"

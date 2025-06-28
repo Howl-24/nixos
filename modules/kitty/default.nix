@@ -55,7 +55,7 @@
           "alt+0" = "goto_tab 10";
 
           # Tmux
-          "ctrl+t" = "launch --cwd=current --type=overlay tmux";
+          "alt+t" = "send_text normal,application tmux\\r";
         };
       };
     })

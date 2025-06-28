@@ -427,7 +427,7 @@
                   "$mainMod SHIFT, C, exec, code"
                   "$mainMod SHIFT, S, exec, spotify"
                   # "$mainMod SHIFT, Y, exec, youtube-music"
-                  "$CONTROL ALT, DELETE, exec, $term -e '${getExe pkgs.btop}'" # System Monitor
+                  "$CONTROL ALT, DELETE, exec, $terminal -e '${getExe pkgs.btop}'" # System Monitor
                   "$mainMod CTRL, C, exec, hyprpicker --autocopy --format=hex" # Colour Picker
 
                   "$mainMod, A, exec, pkill -x rofi || ${./scripts/rofi.sh} drun" # launch desktop applications

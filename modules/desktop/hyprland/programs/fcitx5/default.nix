@@ -60,4 +60,8 @@
       };
     })
   ];
+  # Enable for xwayland
+  environment.variables = {
+    XMODIFIERS = "@im=fcitx";
+  };
 }

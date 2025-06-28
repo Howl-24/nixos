@@ -23,7 +23,6 @@
         };
         globals.mapleader = " ";
         extraPackages = with pkgs; [
-          gcc
           ripgrep
           lynx
           fd

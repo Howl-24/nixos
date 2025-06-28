@@ -19,6 +19,7 @@
     ../../modules/btop
     ../../modules/cava
     # ../../modules/docker
+    ../../modules/direnv
     ../../modules/discord
     ../../modules/disks
     ../../modules/eza
