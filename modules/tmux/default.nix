@@ -41,7 +41,9 @@ in
           set -g renumber-windows on
           set-window-option -g pane-base-index 1
           set -ga terminal-overrides ",*:Tc"
-
+          set -g allow-passthrough on
+          set -ga update-environment TERM
+          set -ga update-environment TERM_PROGRAM
 
           # Tmux binds
           bind r command-prompt "rename-window %%"
