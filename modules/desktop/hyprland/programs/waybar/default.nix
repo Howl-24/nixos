@@ -197,7 +197,7 @@
             "clock" = {
               format = "{:%a %d %b %R}";
               # format = "{:%R 󰃭 %d·%m·%y}";
-              format-alt = "{:%H:%M:%S}";
+              format-alt = "{:%I:%M:%p}";
               tooltip-format = "<tt>{calendar}</tt>";
               calendar = {
                 mode = "month";

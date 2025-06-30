@@ -18,6 +18,7 @@
     # ../../modules/blueman
     # ../../modules/btop
     # ../../modules/cava
+    # ../../modules/cron
     # ../../modules/docker
     # ../../modules/direnv
     # ../../modules/discord

@@ -16,8 +16,10 @@
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
-      gamescopeSession.enable = true;
-      gamescopeSession.steamArgs = [ "-tenfoot" ]; # -pipewire-dmabuf
+      gamescopeSession = {
+        enable = true;
+        steamArgs = [ "-tenfoot" ]; # Default: -tenfoot -pipewire-dmabuf
+      };
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
   };
