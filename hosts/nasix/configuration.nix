@@ -75,6 +75,9 @@
   # Home-manager config
   home-manager.sharedModules = [ (_: { home.packages = with pkgs; [ ]; }) ];
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
+
   hardware.nvidia.prime = {
     # Make sure to use the correct Bus ID values for your system!
     nvidiaBusId = "PCI:01:0:0";

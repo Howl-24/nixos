@@ -22,19 +22,19 @@
     # ../../modules/docker
     # ../../modules/direnv
     # ../../modules/discord
-    ../../modules/disks
-    ../../modules/eza
+    # ../../modules/disks
+    # ../../modules/eza
     # ../../modules/fastfetch
     # ../../modules/firefox
     # ../../modules/firejail
     # ../../modules/flatpak
     # ../../modules/fonts
-    ../../modules/fzf
+    # ../../modules/fzf
     # ../../modules/games
-    ../../modules/garbage-collection
+    # ../../modules/garbage-collection
     # ../../modules/gimp
-    ../../modules/git
-    ../../modules/gpu/${opts.gpu}
+    # ../../modules/git
+    # ../../modules/gpu/${opts.gpu}
     # ../../modules/greetd
     # ../../modules/impermanence
     # ../../modules/imv
@@ -45,27 +45,27 @@
     # ../../modules/libvirtd
     # ../../modules/localsend
     # ../../modules/mpv
-    ../../modules/nixvim
+    # ../../modules/nixvim
     # ../../modules/obs-studio
     # ../../modules/pipewire
     # ../../modules/productivity
-    ../../modules/proxy/tproxy/default
+    # ../../modules/proxy/tproxy/default
     # ../../modules/rice
     # ../../modules/samba
-    ../../modules/scripts/system
-    ../../modules/scripts/user
+    # ../../modules/scripts/system
+    # ../../modules/scripts/user
     # ../../modules/snapper
     # ../../modules/spicetify
     # ../../modules/spotify-player
     # ../../modules/ssh
     # ../../modules/thunderbird
     # ../../modules/tmux
-    ../../modules/utilities
+    # ../../modules/utilities
     # ../../modules/vscode
-    ../../modules/yazi
+    # ../../modules/yazi
     # ../../modules/zathura
-    ../../modules/zoxide
-    ../../modules/zsh
+    # ../../modules/zoxide
+    # ../../modules/zsh
 
     # ../../modules/desktop/hyprland
     # ../../modules/desktop/themes/catppuccin

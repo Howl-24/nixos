@@ -12,10 +12,7 @@ pkgs.writeShellScriptBin "rsync-nixos" ''
       echo "[✓] $REMOTE_HOST is online. Starting synchronization..."
 
       # Sync the NixOS configuration from remote to local
-      rsync -az --delete "$REMOTE_HOST:$REMOTE_PATH" "$LOCAL_PATH/"
-
-      # Remove Git history to avoid conflict with local Git workflows
-      rm -rf "$LOCAL_PATH/nixos/.git"
+      rsync -az --delete --exclude='.git/' "$REMOTE_HOST:$REMOTE_PATH" "$LOCAL_PATH/"
 
       # Replace the host field in whoami.nix with the current machine's hostname
       sed -i "s/host = \".*\"/host = \"$(hostname)\"/" "$WHOAMI_NIX"

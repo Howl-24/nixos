@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  opts,
+  ...
+}:
 {
   programs.zsh.enable = true;
-  users.users.howl = {
+  users.users.${opts.username} = {
     shell = pkgs.zsh;
   };
 
