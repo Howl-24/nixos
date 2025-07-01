@@ -1,5 +1,6 @@
 {
   hostname = "dix";
+  hostType = "desktop";
   gpu = "nvidia";
   locale = "en_US.UTF-8";
   timezone = "Asia/Shanghai";

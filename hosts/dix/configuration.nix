@@ -34,7 +34,7 @@
     ../../modules/garbage-collection
     ../../modules/gimp
     ../../modules/git
-    ../../modules/gpu/${opts.gpu}
+    ../../modules/gpu/${opts.gpu}/${opts.hostType}
     ../../modules/greetd
     ../../modules/impermanence
     ../../modules/imv
@@ -64,7 +64,7 @@
     ../../modules/yazi
     ../../modules/zathura
     ../../modules/zoxide
-    ../../modules/zsh
+    ../../modules/zsh/${opts.hostType}
 
     ../../modules/desktop/hyprland
     ../../modules/desktop/themes/catppuccin

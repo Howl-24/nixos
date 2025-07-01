@@ -1,5 +1,6 @@
 {
   hostname = "nixos";
+  hostType = "";
   gpu = "nvidia";
   locale = "en_US.UTF-8";
   timezone = "Asia/Shanghai";

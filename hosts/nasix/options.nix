@@ -1,5 +1,6 @@
 {
   hostname = "nasix";
+  hostType = "server";
   gpu = "nvidia";
   locale = "en_US.UTF-8";
   timezone = "Asia/Shanghai";
