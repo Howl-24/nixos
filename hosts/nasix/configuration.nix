@@ -58,7 +58,7 @@
     # ../../modules/spotify-player
     # ../../modules/ssh
     # ../../modules/thunderbird
-    # ../../modules/tmux
+    ../../modules/tmux
     # ../../modules/vscode
     ../../modules/yazi
     # ../../modules/zathura
@@ -78,12 +78,6 @@
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
 
-  hardware.nvidia.prime = {
-    # Make sure to use the correct Bus ID values for your system!
-    nvidiaBusId = "PCI:01:0:0";
-    amdgpuBusId = "PCI:07:0:0";
-  };
-
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/d850efcf-11d2-4a43-9a13-a61d362e1cd3";
     fsType = "ext4";
@@ -100,8 +94,8 @@
     options = [
       "uid=1000"
       "gid=100"
-      "dmask=0000"
-      "fmask=0000"
+      "dmask=0002"
+      "fmask=002"
       "exec"
     ];
     neededForBoot = false;

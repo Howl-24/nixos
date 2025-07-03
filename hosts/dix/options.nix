@@ -20,7 +20,7 @@
   hyprland = {
     monitor = [
       "desc:SAC G7u Pro 0001, 3840x2160@160, 0x0, 1.5"
-      "desc:KOS KOIOS K2718UD 0000000000000, 3840x2160@60, -1440x-600, 1.5, transform, 1"
+      "desc:KOS KOIOS K2718UD 0000000000000, 3840x2160@60, 2560x-600, 1.5, transform, 1"
     ];
     workspaceBind = ''
       workspace = 1, monitor:desc:SAC G7u Pro 0001, default:true;

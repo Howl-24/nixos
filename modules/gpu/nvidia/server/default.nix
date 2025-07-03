@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
@@ -38,13 +37,31 @@
     # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = false;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+  };
+
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "pcie_aspm=off"
+  ];
+
+  nixpkgs.config = {
+    nvidia.acceptLicense = true;
+    cudaSupport = true;
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "cudatoolkit"
+        "nvidia-persistenced"
+        "nvidia-settings"
+        "nvidia-x11"
+      ];
   };
 }
