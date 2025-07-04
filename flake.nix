@@ -31,7 +31,9 @@
       nixosConfigurations."${opts.hostname}" = nixpkgs.lib.nixosSystem {
         system = systemType;
         specialArgs = { inherit inputs opts; };
-        modules = [ ./hosts/${opts.hostname}/configuration.nix ];
+        modules = [
+          ./hosts/${opts.hostname}/configuration.nix
+        ];
       };
     };
 }
