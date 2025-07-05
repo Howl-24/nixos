@@ -6,7 +6,9 @@
       enable32Bit = true;
     };
     xpadneo.enable = true;
+    xone.enable = true;
   };
+  services.udev.packages = with pkgs; [ game-devices-udev-rules ];
   programs = {
     gamescope = {
       enable = true;
